@@ -2119,14 +2119,10 @@ diff -ruN post-upstream/include/linux/susfs_def.h work-50/include/linux/susfs_de
  
  #define ND_STATE_LOOKUP_LAST 32
  #define ND_STATE_OPEN_LAST 64
-@@ -74,4 +76,17 @@
+@@ -74,4 +76,13 @@
  	set_ti_thread_flag(&current->thread_info, TIF_PROC_UMOUNTED);
  }
  
-+static inline bool susfs_is_current_proc_umounted_app(void) {
-+	return test_ti_thread_flag(&current->thread_info, TIF_PROC_UMOUNTED);
-+}
-+
 +#ifdef CONFIG_ZEROMOUNT
 +extern bool zeromount_is_uid_blocked(uid_t uid);
 +static inline bool susfs_is_uid_zeromount_excluded(uid_t uid) {
